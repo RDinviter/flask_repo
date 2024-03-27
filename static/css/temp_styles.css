@@ -1,0 +1,39 @@
+
+body {
+  display: flex;
+  background-color: #E0FFFF;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  width: 500px;
+  height: 250px;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px #ccc;
+  background-color: #87CEFA;
+}
+
+.weather_title {
+  display: flex;
+  justify-content: center;
+}
+
+.weather_information {
+  display: flex;
+  justify-content: center;
+}
+
+#info_button {
+  position: relative;
+  background-color: #B0C4DE;
+  width: 170px;
+  height: 35px;
+  border-radius: 9px;
+  box-shadow: 0 4px 16px #778899;
+  border-color: #B0C4DE;
+  left: -360px;
+  bottom: -180px;
+}

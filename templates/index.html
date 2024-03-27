@@ -1,0 +1,28 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="../static/css/main.css">
+
+</head>
+<body>
+  <form action=""
+        method="POST"
+        class="form">
+
+    <h1 class='form_title'>Weather by city name</h1>
+
+    <div class='form_group'>
+      <input
+        type="text"
+        placeholder="Enter your city"
+        name="user_city"
+        id="user_city">
+    </div>
+  </form>
+  <form action="http://127.0.0.1:5000/weather" method="get"  class='form_button'>
+    <button id="button">Показать информацию</button>
+  </form>
+
+    </body>
+</html>

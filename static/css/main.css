@@ -1,0 +1,54 @@
+
+body {
+  display: flex;
+  background-color: #E0FFFF;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form_button {
+  position: relative;
+  bottom: -30px;
+  right: 365px;
+}
+
+.form {
+  width: 500px;
+  height: 200px;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px #ccc;
+  background-color: #87CEFA;
+
+}
+
+.form_title {
+  position: relative;
+  left: 85;
+}
+
+#user_city {
+  width: 250px;
+  position: relative;
+  left: 115;
+}
+
+#user_city {
+  width: 250px;
+  position: relative;
+  left: 115;
+  display: block;
+  background-color: #ADD8E6;
+  border-color: #ADD8E6;
+  border-radius: 5px;
+}
+
+#button {
+  background-color: #B0C4DE;
+  width: 170px;
+  height: 35px;
+  border-radius: 9px;
+  box-shadow: 0 4px 16px #778899;
+  border-color: #B0C4DE;
+}

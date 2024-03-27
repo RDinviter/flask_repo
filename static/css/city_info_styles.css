@@ -1,0 +1,31 @@
+
+body {
+  display: flex;
+  background-color: #E0FFFF;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  width: 700px;
+  height: 450px;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px #ccc;
+  background-color: #87CEFA;
+}
+
+.form_title {
+  display: flex;
+  justify-content: center;
+}
+
+.weather_information {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+font-size: 20px;
+}
