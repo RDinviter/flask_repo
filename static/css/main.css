@@ -20,7 +20,6 @@ body {
   border-radius: 20px;
   box-shadow: 0 4px 16px #ccc;
   background-color: #87CEFA;
-
 }
 
 .form_title {
@@ -45,10 +44,91 @@ body {
 }
 
 #button {
+  position: relative;
   background-color: #B0C4DE;
+  left: -250px;
   width: 170px;
   height: 35px;
   border-radius: 9px;
   box-shadow: 0 4px 16px #778899;
   border-color: #B0C4DE;
+}
+
+.moscow_weather {
+  position: relative;
+  width: 240px;
+  height: 310px;
+  left: -900px;
+  background-color: #87CEFA;
+  bottom: -163px;
+  border-radius: 20px;
+}
+.moscow_title {
+  position: relative;
+  left: 40px;
+  bottom: -10px;
+}
+.moscow_information {
+  position: relative;
+  left: 30px;
+}
+
+.london_weather {
+  position: relative;
+  width: 240px;
+  height: 310px;
+  left: -550px;
+  background-color: #87CEFA;
+  bottom: 168px;
+  border-radius: 20px;
+}
+
+.london_title {
+  position: relative;
+  left: 40px;
+  bottom: -10px;
+}
+.london_information {
+  position: relative;
+  left: 30px;
+}
+
+.abu_dabi_weather {
+  position: relative;
+  width: 240px;
+  height: 310px;
+  left: -200px;
+  background-color: #87CEFA;
+  bottom: 500px;
+  border-radius: 20px;
+}
+
+.abu_dabi_title {
+  position: relative;
+  left: 40px;
+  bottom: -10px;
+}
+.abu_dabi_information {
+  position: relative;
+  left: 30px;
+}
+
+.berlin_weather {
+  position: relative;
+  width: 240px;
+  height: 310px;
+  left: 150px;
+  background-color: #87CEFA;
+  bottom: 830px;
+  border-radius: 20px;
+}
+
+.berlin_title {
+  position: relative;
+  left: 40px;
+  bottom: -10px;
+}
+.berlin_information {
+  position: relative;
+  left: 30px;
 }

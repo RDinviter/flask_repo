@@ -13,6 +13,7 @@ app = Flask(__name__, '/static')
 
 @app.route('/', methods=['post', 'get'])
 def index():
+    write_index_capitals_info()
     if request.method == 'POST':
         global user_city
         user_city = request.form['user_city']
