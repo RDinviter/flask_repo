@@ -40,8 +40,13 @@ def weather():
 @app.route('/about_city')
 def show_info_about_city():
     write_information_about_city(user_city)
-
     return render_template('info_about_city.html')
+
+
+@app.route('/forecast')
+def show_forecast():
+    write_weather_forecast(user_city)
+    return render_template('weather_forecast.html')
 
 
 if __name__ == "__main__":
