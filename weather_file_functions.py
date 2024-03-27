@@ -6,6 +6,17 @@ wiki.set_lang('ru')
 
 API = 'c9ed96787da81c9fac403046e34131d5'
 
+
+class WeatherInfoByCity:
+    def __init__(self, city_name):
+        self.info = req.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API}&units=metric')
+        self.data = self.info.json()
+        self.temp = self.data['main']['temp']
+        self.humidity = self.data['main']['humidity']
+        self.temp_feels_like = self.data['main']['feels_like']
+        self.wind_speed = self.data['wind']['speed']
+
+
 def write_weather_information(user_city, temp, temp_feels_like, humidity, wind_speed):
     with open('templates/temp.html', 'w', encoding='utf-8') as temp_file:
         temp_file.write(f"""
@@ -84,8 +95,6 @@ def write_information_about_city(user_city):
 
 def write_weather_forecast(user_city):
 
-    cnt = 5
-
     all_masses = [[], [], [], [], [], []]
 
     mass_time = []
@@ -109,13 +118,17 @@ def write_weather_forecast(user_city):
 
     j = 0
     all_masses[0].append(
-        f'<form class="first_weather_form"><div class="first_div"><h2 id="first_title">Прогноз на {mass_time[mass_days[0]][:10]}:</h2>')
+        f'<form class="first_weather_form"><div class="first_div"><h2 id="first_title">'
+        f'Прогноз на {mass_time[mass_days[0]][:10]}:</h2>')
     all_masses[1].append(
-        f'<form class="second_weather_form"> <div class="second_div"><h2 id="second_title">Прогноз на {mass_time[mass_days[1]][:10]}</h2>')
+        f'<form class="second_weather_form"> <div class="second_div"><h2 id="second_title">'
+        f'Прогноз на {mass_time[mass_days[1]][:10]}</h2>')
     all_masses[2].append(
-        f'<form class="third_weather_form"><div class="third_div"><h2 id="third_title">Прогноз на {mass_time[mass_days[2]][:10]}</h2>')
+        f'<form class="third_weather_form"><div class="third_div"><h2 id="third_title">'
+        f'Прогноз на {mass_time[mass_days[2]][:10]}</h2>')
     all_masses[3].append(
-        f'<form class="fourth_weather_form"><div class="fourth_div"><h2 id="fourth_title">Прогноз на {mass_time[mass_days[3]][:10]}</h2>')
+        f'<form class="fourth_weather_form"><div class="fourth_div"><h2 id="fourth_title">'
+        f'Прогноз на {mass_time[mass_days[3]][:10]}</h2>')
 
     for i in range(0, len(forecast_dict) - 1):
         all_masses[j].append(f'''<b>{mass_time[i][11:19]}:</b><br>
@@ -157,34 +170,10 @@ def write_weather_forecast(user_city):
 
 
 def write_index_capitals_info():
-
-    moscow_info = req.get(f'https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid={API}&units=metric')
-    moscow_data = moscow_info.json()
-    moscow_temp = moscow_data['main']['temp']
-    moscow_humidity = moscow_data['main']['humidity']
-    moscow_temp_feels_like = moscow_data['main']['feels_like']
-    moscow_wind_speed = moscow_data['wind']['speed']
-
-    london_info = req.get(f'https://api.openweathermap.org/data/2.5/weather?q=London&appid={API}&units=metric')
-    london_data = london_info.json()
-    london_temp = london_data['main']['temp']
-    london_humidity = london_data['main']['humidity']
-    london_temp_feels_like = london_data['main']['feels_like']
-    london_wind_speed = london_data['wind']['speed']
-
-    abu_dabi_info = req.get(f'https://api.openweathermap.org/data/2.5/weather?q=Абу-Даби&appid={API}&units=metric')
-    abu_dabi_data = abu_dabi_info.json()
-    abu_dabi_temp = abu_dabi_data['main']['temp']
-    abu_dabi_humidity = abu_dabi_data['main']['humidity']
-    abu_dabi_temp_feels_like = abu_dabi_data['main']['feels_like']
-    abu_dabi_wind_speed = abu_dabi_data['wind']['speed']
-
-    berlin_info = req.get(f'https://api.openweathermap.org/data/2.5/weather?q=Абу-Даби&appid={API}&units=metric')
-    berlin_data = berlin_info.json()
-    berlin_temp = berlin_data['main']['temp']
-    berlin_humidity = berlin_data['main']['humidity']
-    berlin_temp_feels_like = berlin_data['main']['feels_like']
-    berlin_wind_speed = berlin_data['wind']['speed']
+    moscow = WeatherInfoByCity('Moscow')
+    london = WeatherInfoByCity('London')
+    abu_dabi = WeatherInfoByCity('Абу-Даби')
+    berlin = WeatherInfoByCity('Berlin')
 
     with open('templates/index.html', 'w', encoding='utf-8') as index_file:
         index_file.write(f"""
@@ -211,30 +200,30 @@ def write_index_capitals_info():
   <form>
     <div class='moscow_weather'>
       <h1 class='moscow_title'>Weather in Moscow</h1>
-      <h2 class='moscow_information'>Temperatue: {moscow_temp}</h2>
-      <h2 class='moscow_information'>Feels like: {moscow_temp_feels_like}</h2>
-      <h2 class='moscow_information'>Humidity: {moscow_humidity}</h2>
-      <h2 class='moscow_information'>Wind speed: {moscow_wind_speed}</h2></div>
+      <h2 class='moscow_information'>Temperatue: {moscow.temp}</h2>
+      <h2 class='moscow_information'>Feels like: {moscow.temp_feels_like}</h2>
+      <h2 class='moscow_information'>Humidity: {moscow.humidity}</h2>
+      <h2 class='moscow_information'>Wind speed: {moscow.wind_speed}</h2></div>
 
     <div class='london_weather'>
       <h1 class='london_title'>Weather in London</h1>
-      <h2 class='london_information'>Temperatue: {london_temp}</h2>
-      <h2 class='london_information'>Feels like: {london_temp_feels_like}</h2>
-      <h2 class='london_information'>Humidity: {london_humidity}</h2>
-      <h2 class='london_information'>Wind speed: {london_wind_speed}</h2></div>
+      <h2 class='london_information'>Temperatue: {london.temp}</h2>
+      <h2 class='london_information'>Feels like: {london.temp_feels_like}</h2>
+      <h2 class='london_information'>Humidity: {london.humidity}</h2>
+      <h2 class='london_information'>Wind speed: {london.wind_speed}</h2></div>
     <div class='abu_dabi_weather'>
         <h1 class='abu_dabi_title'>Weather in<br>
            Абу-Даби</h1>
-        <h2 class='abu_dabi_information'>Temperatue: {abu_dabi_temp}</h2>
-        <h2 class='abu_dabi_information'>Feels like: {abu_dabi_temp_feels_like}</h2>
-        <h2 class='abu_dabi_information'>Humidity: {abu_dabi_humidity}</h2>
-        <h2 class='abu_dabi_information'>Wind speed: {abu_dabi_wind_speed}</h2></div>
+        <h2 class='abu_dabi_information'>Temperatue: {abu_dabi.temp}</h2>
+        <h2 class='abu_dabi_information'>Feels like: {abu_dabi.temp_feels_like}</h2>
+        <h2 class='abu_dabi_information'>Humidity: {abu_dabi.humidity}</h2>
+        <h2 class='abu_dabi_information'>Wind speed: {abu_dabi.wind_speed}</h2></div>
     <div class='berlin_weather'>
         <h1 class='berlin_title'>Weather in Берлин</h1>
-        <h2 class='berlin_information'>Temperatue: {berlin_temp}</h2>
-        <h2 class='berlin_information'>Feels like: {berlin_temp_feels_like}</h2>
-        <h2 class='berlin_information'>Humidity: {berlin_humidity}</h2>
-        <h2 class='berlin_information'>Wind speed: {berlin_wind_speed}</h2></div>
+        <h2 class='berlin_information'>Temperatue: {berlin.temp}</h2>
+        <h2 class='berlin_information'>Feels like: {berlin.temp_feels_like}</h2>
+        <h2 class='berlin_information'>Humidity: {berlin.humidity}</h2>
+        <h2 class='berlin_information'>Wind speed: {berlin.wind_speed}</h2></div>
   </form>
   <form action="http://127.0.0.1:5000/weather" method="get"  class='form_button'>
     <button id="button">Показать информацию</button>

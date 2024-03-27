@@ -1,16 +1,26 @@
 
-                   <html>
-                   <head>
-                       <title>Weather</title>
-                       <meta charset='UTF-8'>
-                       <link rel="stylesheet" href="../static/css/temp_styles.css">
-                   </head>
-                   <body>
-                       <form class='form'>
-                       <h1>Error with cod 404</h1>
-                       <h2>Возможно, вы неправильно ввели город</h2>
-                       <h2>Попробуйте еще раз</h2>
-                       </form>
-                   </body>
-                   </html>
-                   
+    <html>
+    <head>
+        <title>Weather</title>
+        <meta charset='UTF-8'>
+        <link rel="stylesheet" href="../static/css/temp_styles.css">
+    </head>
+    <body>
+        <form class='form'>
+          <div>
+            <h1 class='weather_title'>Weather in нюксеница</h1>
+            <h2 class='weather_information'>Temperatue: -0.93</h2>
+            <h2 class='weather_information'>Feels like: -0.93</h2>
+            <h2 class='weather_information'>Humidity: 92</h2>
+            <h2 class='weather_information'>Wind speed: 0.43</h2>
+          </div>
+        </form>
+        <form class='info_button' action="http://127.0.0.1:5000/about_city" method="get">
+          <button id='info_button'>Информация о городе</button>
+        </form>
+        <form class='forecast_button' action="http://127.0.0.1:5000/forecast" method="get">
+          <button id='forecast_button'>Прогноз погоды</button>
+        </form>
+    </body>
+    </html>
+    
