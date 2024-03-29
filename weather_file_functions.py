@@ -5,6 +5,7 @@ wrapper = textwrap.TextWrapper(width=20)
 wiki.set_lang('ru')
 
 API = 'c9ed96787da81c9fac403046e34131d5'
+news_api_key = 'd252fc39f3614de0a93db12805dc04ed'
 
 
 class WeatherInfoByCity:
@@ -228,7 +229,46 @@ def write_index_capitals_info():
   <form action="http://127.0.0.1:5000/weather" method="get"  class='form_button'>
     <button id="button">Показать информацию</button>
   </form>
-
+    <form action="http://127.0.0.1:5000/news" method="get"  class='news_button'>
+      <button id="news_button">Новости</button>
+  </form>
     </body>
 </html>
 """)
+
+
+def get_news(api_key):
+    url = "http://newsapi.org/v2/top-headlines"
+    params = {
+        'country': 'us',  # Измените страну при необходимости
+        'apiKey': api_key
+    }
+
+    response = req.get(url, params=params)
+    data = response.json()
+    print(data)
+
+    if data['status'] == 'ok':
+        articles = data['articles']
+        count = 0
+        with open('templates/news_page.html', 'w', encoding='utf=8') as out_file:
+            out_file.write("""<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="../static/css/news_page_styles.css">
+</head>
+<body>""")
+
+            for idx, article in enumerate(articles, start=1):
+                out_file.write(f'<form class="form_news" action="{article["url"]}" method="get">\n')
+                out_file.write(f"""<h4 class='news_titles'>{idx}. {article['title']}</h4>
+                                    <button class='form_buttons'>Read more</button>""")
+                out_file.write(f'</form>')
+                count += 1
+                # out_file.write(article['url'])
+                out_file.write('\n\n')
+            out_file.write("</body></html>")
+    else:
+        with open('templates/news_page.html', 'w', encoding='utf=8') as out_file:
+            out_file.write("Произошла ошибка при получении новостей")

@@ -1,0 +1,28 @@
+body {
+  background-color: #E0FFFF;
+}
+
+.form_news {
+  position: relative;
+  width: 1000px;
+  height: 70px;
+  background-color: #87CEFA;
+  left: 30px;
+  bottom: -30px;
+  border-radius: 10px;
+}
+
+.news_titles {
+  position: relative;
+  left: 10px;
+  bottom: -15px;
+}
+
+.form_buttons {
+  width: 150px;
+  height: 25px;
+  border-radius: 7px;
+  border-color: #B0C4DE;
+  box-shadow: 0 4px 6px #00CED1;
+  background-color: #AFEEEE;
+}

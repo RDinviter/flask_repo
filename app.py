@@ -7,6 +7,7 @@ from weather_file_functions import *
 # webbrowser.open_new('http://127.0.0.1:5000')
 
 API = 'c9ed96787da81c9fac403046e34131d5'
+news_api_key = 'd252fc39f3614de0a93db12805dc04ed'
 
 app = Flask(__name__, '/static')
 
@@ -48,6 +49,12 @@ def show_info_about_city():
 def show_forecast():
     write_weather_forecast(user_city)
     return render_template('weather_forecast.html')
+
+
+@app.route('/news')
+def show_news():
+    get_news(news_api_key)
+    return render_template('news_page.html')
 
 
 if __name__ == "__main__":
